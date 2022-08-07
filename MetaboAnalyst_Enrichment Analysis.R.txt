@@ -1,0 +1,16 @@
+1.	mSet<-InitDataObjects("conc", "msetora", FALSE)
+2.	cmpd.vec<-c("3-Hydroxybutyrate","carnitine C14:3","Dl-Lactic acid","D-Phenylalanine","FA 14:0","FA 14:1","FA 15:0","FA 16:0","FA 16:1","FA 16:2","FA 17:0","FA 17:1","FA 18:0","FA 18:1","FA 18:2","FA 18:4","FA 19:1","FA 20:0","FA 20:1","LPC 14:0","LPC 15:0","LPC 16:0","LPC 16:1","LPC 17:0","LPC 18:0","LPC 18:1","LPC 18:2","LPC 18:3","LPC 20:4","LPC 20:5","LPC 22:5","LPC 22:6","LPC O-16:0","LPC O-16:1","LPC O-18:1","LPC P-18:0","LPE 16:0","LPE 16:1","LPE 18:0","LPE 20:4","LPE 20:5","LPE 22:4","LPE 22:6","PC 30:0","PC 32:1","PC 33:1","PC 34:0","PC 34:1","PC 34:2","PC 35:2","PC 35:3","PC 36:2","PC 36:3","PC 36:4","PC 36:5","PC 38:4","PC 38:5","PC 38:6","PC 38:7","PC O-34:2","PC O-36:4","PC O-36:5","PC O-38:5","PC O-38:6","PE 34:2","PE 38:6","PE O-34:3","PE O-36:5","PE O-38:6","PE O-38:7","Phosphoric acid","SM 34:1","SM 36:1","Sphingosine-1-phosphate","Uridine")
+3.	mSet<-Setup.MapData(mSet, cmpd.vec);
+4.	mSet<-CrossReferencing(mSet, "name", lipid = T);
+5.	mSet<-CreateMappingResultTable(mSet)
+6.	mSet<-SetMetabolomeFilter(mSet, F);
+7.	mSet<-SetCurrentMsetLib(mSet, "sub_class", 2);
+8.	mSet<-CalculateHyperScore(mSet)
+9.	mSet<-PlotORA(mSet, "ora_0_", "net", "png", 72, width=NA)
+10.	mSet<-PlotEnrichDotPlot(mSet, "ora", "ora_dot_0_", "png", 72, width=NA)
+11.	mSet<-PlotEnrichPieChart(mSet, "ora", "ora_pie_0_", "png", 72)
+12.	mSet<-CalculateHyperScore(mSet)
+13.	mSet<-PlotORA(mSet, "ora_1_", "net", "png", 72, width=NA)
+14.	mSet<-PlotEnrichDotPlot(mSet, "ora", "ora_dot_1_", "png", 72, width=NA)
+15.	mSet<-PlotEnrichPieChart(mSet, "ora", "ora_pie_1_", "png", 72)
+Xia Lab @ McGill   (last updated 2022-07-24)

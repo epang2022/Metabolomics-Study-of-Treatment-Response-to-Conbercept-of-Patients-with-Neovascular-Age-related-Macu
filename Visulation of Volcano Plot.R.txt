@@ -1,0 +1,10 @@
+library(ggpubr)
+library(ggthemes)
+setwd("D:/R/R-Studio/Data")
+deg.data<-read.table("Volcano Plot.txt",header=T,sep="\t")
+head(deg.data)
+deg.data$logP<- -log10(deg.data$padj)
+deg.data$Group="non-significant"
+deg.data$Group[which((deg.data$padj<0.05)&(deg.data$log2FoldChange>0.263))]="up-regulated"
+deg.data$Group[which((deg.data$padj<0.05)&(deg.data$log2FoldChange< -0.263))]="down-regulated"
+ggscatter(deg.data,x="log2FoldChange",y="logP",color="Group",palette=c("#2f5688","#BBBBBB","#CC0000"),size=12,label=deg.data$GeneID,font.label=35,repel=T,xlab="log2FoldChange",ylab="-log10(Adjust P-value)",label.select=deg.data$GeneID[1:20])+theme_base()+geom_hline(yintercept = 1.30,linetype="dashed")+geom_vline(xintercept=c(-0.263,0.263),linetype="dashed")
